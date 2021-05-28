@@ -40,20 +40,17 @@ public class UserControllerTest {
             "123456789").build();
 
     expectedUserList = Arrays.asList(
-        User.builder().id("1").username("test").password("aaa").email("aaa@aa.a").phoneNumber(
+        User.builder().id("1").username("test").password("*****").email("aaa@aa.a").phoneNumber(
             "123456789").build(),
-        User.builder().id("2").username("test").password("aaa").email("aaa@aa.a").phoneNumber(
+        User.builder().id("2").username("test").password("*****").email("aaa@aa.a").phoneNumber(
             "123456789").build(),
-        User.builder().id("3").username("test").password("aaa").email("aaa@aa.a").phoneNumber(
+        User.builder().id("3").username("test").password("*****").email("aaa@aa.a").phoneNumber(
             "123456789").build()
     );
   }
 
   @MockBean
   protected UserService service;
-
-  @MockBean
-  UserRepository repository;
 
   @Autowired
   private WebTestClient webClient;

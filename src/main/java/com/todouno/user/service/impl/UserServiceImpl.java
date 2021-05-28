@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
   public Flux<User> findAll() {
     return userRepository.findAll()
         .map(user -> {
-          user.setPassword(encryptor.decrypt(user.getPassword()));
+          user.setPassword("*****");
           return user;
         });
   }
