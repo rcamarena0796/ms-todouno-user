@@ -1,6 +1,8 @@
 package com.todouno.user.model;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,16 +25,17 @@ public class User {
   @Id
   private String id;
 
-  @NotBlank(message = "'username' is required")
+  @NotBlank(message = "username is required")
   private String username;
 
-  @NotBlank(message = "'password' is required")
+  @NotBlank(message = "password is required")
   private String password;
 
-  @NotBlank(message = "'email' is required")
+  @Email(message = "email should be valid")
   private String email;
 
-  @NotBlank(message = "'phoneNumber' is required")
+  @NotBlank(message = "phoneNumber is required")
+  @Pattern(regexp="(^$|[0-9]{9})",message = "phoneNumber must be valid")
   private String phoneNumber;
 
 }

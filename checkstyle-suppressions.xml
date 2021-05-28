@@ -7,4 +7,6 @@
 <suppressions>
   <suppress files="[\\/]target[\\/]" checks="[a-zA-Z0-9]*"/>
   <suppress files="[\\/]src[\\/]test[\\/]" checks="[a-zA-Z0-9]*"/>
+  <suppress files="[\\/]src[\\/]main[\\/]java[\\/]com[\\/]todouno[\\/]user[\\/]config[\\/]"
+    checks="[a-zA-Z0-9]*"/>
 </suppressions>
