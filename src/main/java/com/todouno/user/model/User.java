@@ -35,7 +35,7 @@ public class User {
   private String email;
 
   @NotBlank(message = "phoneNumber is required")
-  @Pattern(regexp="(^$|[0-9]{9})",message = "phoneNumber must be valid")
+  @Pattern(regexp = "(^$|[0-9]{9})", message = "phoneNumber must be valid")
   private String phoneNumber;
 
 }

@@ -30,26 +30,26 @@ public class UserController {
   @Autowired
   private UserService userService;
 
-  /**
-   * USER CONTROLLER.
-   */
-  @GetMapping("/test")
-  public Mono<User> saludo() {
-    User hola = new User();
-    hola.setUsername("Ruben");
-    return Mono.justOrEmpty(hola);
-  }
-
   @ApiOperation(value = "Service used to return all users")
   @GetMapping("/findAll")
   public Flux<User> findAll() {
     return userService.findAll();
   }
 
+  /**
+   * FIND A USER.
+   */
   @ApiOperation(value = "Service used to find a user by id")
   @GetMapping("/find/{id}")
-  public Mono<User> findById(@PathVariable("id") String id) {
-    return userService.findById(id);
+  public Mono<ResponseEntity<User>> findById(@PathVariable("id") String id) {
+    return userService.findById(id).map(c -> ResponseEntity
+        .ok()
+        .contentType(MediaType.APPLICATION_JSON)
+        .body(c))
+        .defaultIfEmpty(ResponseEntity
+            .notFound()
+            .build()
+        );
   }
 
   /**

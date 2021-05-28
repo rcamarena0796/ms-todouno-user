@@ -41,14 +41,12 @@ public class UserServiceImpl implements UserService {
     return userRepository.findById(id).map(user -> {
       user.setPassword(encryptor.decrypt(user.getPassword()));
       return user;
-    });
+    }).switchIfEmpty(Mono.empty());
   }
 
   @Override
   public Mono<User> save(User user) {
     try {
-
-      logger.info("ENCRYPT:" + encryptor.encrypt(user.getPassword()));
       user.setPassword(encryptor.encrypt(user.getPassword()));
       return userRepository.save(user);
 
